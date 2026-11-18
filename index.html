@@ -5,49 +5,148 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Informatika – učim i vježbam</title>
 <style>
-:root{--bg:#f6f7fb;--fg:#1c2033;--card:#fff;--mut:#6a7090;--ac:#5b5bf0;--acf:#fff;--ok:#1f9d63;--okb:#e1f6ec;--bad:#d6404f;--badb:#fde8ea;--bd:#dfe2ef;
+:root{--bg:#f4f5fb;--fg:#181b2e;--card:#fff;--mut:#667090;--ac:#6366f1;--ac2:#a855f7;--acf:#fff;--ok:#12a366;--okb:#dcf5ea;--bad:#e0404f;--badb:#fde6e9;--bd:#e3e6f3;--sh:0 6px 24px rgba(60,66,140,.09);--g:linear-gradient(135deg,#6366f1,#a855f7 60%,#ec4899);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141f;--fg:#eceefa;--card:#1c1f31;--mut:#9aa0c4;--ac:#8484ff;--acf:#10121c;--ok:#4cd694;--okb:#16352a;--bad:#ff7783;--badb:#3b1c22;--bd:#2c3050;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#12141f;--fg:#eceefa;--card:#1c1f31;--mut:#9aa0c4;--ac:#8484ff;--acf:#10121c;--ok:#4cd694;--okb:#16352a;--bad:#ff7783;--badb:#3b1c22;--bd:#2c3050;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1020;--fg:#eceefb;--card:#171a2e;--mut:#9aa1c8;--ac:#8b8dff;--ac2:#c084fc;--acf:#0e1020;--ok:#4cd694;--okb:#13342a;--bad:#ff7783;--badb:#3a1b22;--bd:#2a2e4d;--sh:0 6px 24px rgba(0,0,0,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1020;--fg:#eceefb;--card:#171a2e;--mut:#9aa1c8;--ac:#8b8dff;--ac2:#c084fc;--acf:#0e1020;--ok:#4cd694;--okb:#13342a;--bad:#ff7783;--badb:#3a1b22;--bd:#2a2e4d;--sh:0 6px 24px rgba(0,0,0,.35);color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-#app{max-width:600px;margin:0 auto;padding:18px 16px 40px}
-h1{font-size:26px;margin:8px 0 4px}h2{font-size:20px;margin:6px 0 12px}h3{font-size:17px;margin:0 0 6px}
-p{color:var(--mut);margin:0 0 16px}
-button{font:inherit;color:inherit;cursor:pointer}
-mark{background:#ffe27a;color:#1c2033;border-radius:3px;padding:0 2px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;
+background-image:radial-gradient(520px 320px at 100% -40px,rgba(168,85,247,.22),transparent 70%),radial-gradient(460px 300px at -10% 0,rgba(99,102,241,.2),transparent 70%);background-repeat:no-repeat}
+#app{max-width:640px;margin:0 auto;padding:14px 16px 48px;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:30px;line-height:1.15;margin:10px 0 6px;letter-spacing:-.02em}h2{font-size:21px;margin:8px 0 14px;letter-spacing:-.01em}h3{font-size:17px;margin:0 0 8px}
+p{color:var(--mut);margin:0 0 18px}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+mark{background:linear-gradient(transparent 45%,rgba(250,204,21,.55) 45%);color:inherit;padding:0 2px}
 sub,sup{line-height:0;font-size:.75em}
-ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
-.big{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:18px;padding:18px;margin-bottom:12px}
-.big:active,.opt:active,.tp:active{transform:scale(.98)}
-.big b{display:block;font-size:20px}.big span{color:var(--mut);font-size:14px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.tp{background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:14px 10px;text-align:center;font-size:14px}
-.tp i{display:block;font-size:26px;font-style:normal}.tp small{color:var(--mut)}
-.back{background:none;border:none;color:var(--ac);padding:6px 0;font-size:15px}
-.btn{background:var(--ac);color:var(--acf);border:none;border-radius:12px;padding:12px 18px;font-weight:600}
-.btn.sec{background:var(--card);color:var(--fg);border:2px solid var(--bd)}
-.row{display:flex;gap:10px;margin-top:14px}.row .btn{flex:1}
-.fc{background:var(--card);border:2px solid var(--bd);border-radius:20px;min-height:230px;padding:20px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer}
-.fc small{color:var(--mut);text-transform:uppercase;letter-spacing:.06em;font-size:12px;margin-bottom:10px}
-.fc .t{font-size:21px;font-weight:600}
-.fc.a{border-color:var(--ac);justify-content:flex-start;text-align:left}
-.fc.a .t{font-size:16px;font-weight:400;max-height:58vh;overflow:auto}
-.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin:8px 0 14px}.bar div{height:100%;background:var(--ac);transition:width .3s}
-.hud{display:flex;justify-content:space-between;color:var(--mut);font-size:14px}
-.q{font-size:20px;font-weight:600;margin:6px 0 14px}
-.opt{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:13px 14px;margin-bottom:9px}
-.opt.ok{border-color:var(--ok);background:var(--okb)}.opt.no{border-color:var(--bad);background:var(--badb)}
-.fb{padding:12px 14px;border-radius:12px;margin-top:6px;font-size:15px}.fb.ok{background:var(--okb)}.fb.no{background:var(--badb)}
-.res{text-align:center;font-size:54px;margin:10px 0}
-.rv{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:14px}
-.rv b{display:block}.rv span{color:var(--ok)}
-.sec{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin-bottom:10px}
-.sec.st{border-left:5px solid var(--ac)}
+ul{margin:6px 0;padding-left:20px}li{margin:4px 0}
+.top{display:flex;justify-content:space-between;align-items:center;min-height:40px;margin-bottom:6px}
+.logo{font-weight:700;font-size:15px;color:var(--mut)}
+.back{background:none;border:none;color:var(--ac);padding:8px 0;font-size:15px;font-weight:600}
+.ico{width:40px;height:40px;border-radius:50%;border:1px solid var(--bd);background:var(--card);box-shadow:var(--sh);font-size:18px}
+.hero{background:var(--g);color:#fff;border-radius:26px;padding:24px 22px;margin:8px 0 18px;box-shadow:0 14px 34px rgba(124,58,237,.3)}
+.hero h1{margin:0 0 4px}.hero p{color:rgba(255,255,255,.85);margin:0 0 16px}
+.stats{display:flex;gap:10px}.stats div{flex:1;background:rgba(255,255,255,.18);border-radius:14px;padding:9px 6px;text-align:center;font-size:12px}
+.stats b{display:block;font-size:20px}
+.big{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:var(--sh);transition:transform .15s,border-color .15s}
+.big:hover{border-color:var(--ac)}
+.big .bi{flex:none;width:52px;height:52px;border-radius:16px;background:var(--g);display:grid;place-items:center;font-size:26px}
+.big b{display:block;font-size:18px}.big span{color:var(--mut);font-size:14px;line-height:1.35;display:block}
+.big:active,.opt:active,.tp:active{transform:scale(.97)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.tp{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px 10px;text-align:center;font-size:14px;font-weight:600;box-shadow:var(--sh);transition:transform .15s,border-color .15s}
+.tp:hover{border-color:var(--ac)}
+.tp i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 8px;border-radius:14px;background:var(--bd);font-size:24px;font-style:normal}
+.tp small{display:block;color:var(--mut);font-weight:400;margin-top:2px}
+.btn{background:var(--g);color:#fff;border:none;border-radius:14px;padding:13px 18px;font-weight:700;box-shadow:0 6px 16px rgba(124,58,237,.28)}
+.btn.ghost{background:var(--card);color:var(--fg);border:1px solid var(--bd);box-shadow:none}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
+.fc{perspective:900px}
+.fci{background:var(--card);border:1px solid var(--bd);border-radius:26px;min-height:270px;padding:24px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;box-shadow:var(--sh);animation:flip .35s ease}
+@keyframes flip{from{opacity:0;transform:rotateX(-14deg) scale(.97)}to{opacity:1;transform:none}}
+.fci small{color:var(--ac);text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:700;margin-bottom:12px}
+.fci .t{font-size:22px;font-weight:700;line-height:1.3}
+.fci.a{border-color:var(--ac);justify-content:flex-start;text-align:left}
+.fci.a .t{font-size:16px;font-weight:400;max-height:58vh;overflow:auto}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin:8px 0 16px}.bar div{height:100%;background:var(--g);border-radius:6px;transition:width .35s}
+.hud{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;font-weight:600}
+.q{font-size:20px;font-weight:700;margin:6px 0 16px;line-height:1.35}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:13px 14px;margin-bottom:10px;box-shadow:var(--sh);transition:transform .12s,border-color .12s}
+.opt:hover{border-color:var(--ac)}
+.opt em{flex:none;width:26px;height:26px;border-radius:9px;background:var(--bd);display:grid;place-items:center;font-size:13px;font-style:normal;font-weight:700}
+.opt.ok{border-color:var(--ok);background:var(--okb)}.opt.ok em{background:var(--ok);color:#fff}
+.opt.no{border-color:var(--bad);background:var(--badb)}.opt.no em{background:var(--bad);color:#fff}
+.fb{padding:13px 15px;border-radius:14px;margin-top:6px;font-weight:600;animation:in .25s}.fb.ok{background:var(--okb);color:var(--ok)}.fb.no{background:var(--badb);color:var(--bad)}
+.res{text-align:center;font-size:56px;margin:6px 0}
+.ring{width:130px;height:130px;border-radius:50%;margin:8px auto 14px;display:grid;place-items:center;font-size:26px;font-weight:800;background:conic-gradient(var(--ac) calc(var(--p)*1%),var(--bd) 0);position:relative}
+.ring::before{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--bg)}.ring span{position:relative}
+.rv{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--bad);border-radius:14px;padding:11px 13px;margin-bottom:9px;font-size:14px}
+.rv b{display:block;margin-bottom:3px}.rv span{color:var(--ok)}
+.srch{width:100%;box-sizing:border-box;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:14px;padding:12px 14px;font:inherit;margin-bottom:16px;box-shadow:var(--sh)}
+.blk{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px 16px;margin-bottom:12px;box-shadow:var(--sh)}
+.blk.st{border-left:5px solid var(--ac2)}
+.blk h3{display:flex;justify-content:space-between;gap:8px}
 .fm{text-align:center;font-size:20px;font-family:"Times New Roman",Georgia,serif;font-style:italic;margin:12px 0;overflow-x:auto}
 .sg{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;font-style:normal;margin:0 4px}
 .sg b{font-size:32px;font-weight:400}.sg i{font-size:12px;font-style:normal}
-.tb{border-collapse:collapse;margin:8px auto;font-size:14px}.tb td,.tb th{border:1px solid var(--bd);padding:5px 10px;text-align:center}
+.tbw{overflow-x:auto}
+.tb{border-collapse:collapse;margin:10px auto;font-size:14px;border-radius:10px;overflow:hidden}.tb td,.tb th{border:1px solid var(--bd);padding:6px 11px;text-align:center}.tb th{background:var(--bd)}
+html{scroll-behavior:smooth}*{scrollbar-width:thin}
+@property --p{syntax:"<number>";inherits:false;initial-value:0}
+body{transition:background-color .4s,color .4s}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;background:radial-gradient(40% 35% at 20% 20%,rgba(99,102,241,.28),transparent 70%),radial-gradient(35% 30% at 85% 15%,rgba(236,72,153,.2),transparent 70%),radial-gradient(40% 35% at 70% 90%,rgba(168,85,247,.22),transparent 70%);animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(4%,3%,0) scale(1.1) rotate(4deg)}}
+#app{animation:none}
+.hero,.big,.tp,.blk,.opt,.rv{animation:rise .6s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.98)}}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#4f46e5,#9333ea,#ec4899,#4f46e5);background-size:300% 100%;animation:rise .6s cubic-bezier(.2,.8,.2,1) backwards,sheen 12s ease infinite}
+@keyframes sheen{50%{background-position:100% 0}}
+.hero::after{content:"";position:absolute;width:220px;height:220px;right:-60px;top:-80px;border-radius:50%;background:rgba(255,255,255,.18);filter:blur(8px);animation:float 7s ease-in-out infinite alternate;pointer-events:none}
+@keyframes float{to{transform:translate(-30px,40px) scale(1.2)}}
+.hero h1{font-size:32px;text-shadow:0 2px 14px rgba(0,0,0,.2)}
+.stats div{backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.28)}
+.big,.tp,.blk,.opt,.rv{position:relative;overflow:hidden;background-image:linear-gradient(160deg,rgba(255,255,255,.08),transparent 60%)}
+.big,.tp,.opt,.btn,.ico,.back{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s,background .25s}
+.big:hover,.tp:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(99,102,241,.24)}
+.bi,.tp i{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.bi{box-shadow:0 8px 18px rgba(124,58,237,.35)}
+.big:hover .bi{transform:rotate(-8deg) scale(1.1)}.tp:hover i{transform:scale(1.15) rotate(6deg)}
+.opt:hover{transform:translateX(4px)}
+.big:active,.tp:active,.opt:active{transform:scale(.97)}
+.btn,.ico{position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(124,58,237,.4)}
+.btn:active,.ico:active{transform:scale(.95)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);pointer-events:none}
+.btn:hover::after{transform:translateX(120%);transition:transform .7s}
+.btn.ghost::after{display:none}.btn.ghost:hover{box-shadow:var(--sh);border-color:var(--ac)}
+.ico:hover{transform:rotate(180deg)}
+.bar div{position:relative;box-shadow:0 0 12px rgba(168,85,247,.55);animation:grow .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes grow{from{width:0}}
+.bar div::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:shim 1.8s infinite}
+@keyframes shim{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.fc{perspective:1000px}
+@keyframes flip{from{opacity:0;transform:rotateY(-80deg) scale(.96)}to{opacity:1;transform:none}}
+.fci{background-image:linear-gradient(160deg,rgba(99,102,241,.1),rgba(236,72,153,.07));transition:box-shadow .3s}
+.fci:hover{box-shadow:0 18px 40px rgba(99,102,241,.22)}
+.fci.a{box-shadow:0 0 0 1px var(--ac),0 18px 40px rgba(99,102,241,.25)}
+.opt.ok{animation:pop .5s cubic-bezier(.3,1.6,.5,1);animation-delay:0s}
+@keyframes pop{40%{transform:scale(1.04)}}
+.opt.no{animation:shake .45s;animation-delay:0s}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.ring{animation:ringin 1.2s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 8px 18px rgba(99,102,241,.4))}
+@keyframes ringin{from{--p:0}}
+.res{animation:bnc .8s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bnc{from{transform:scale(0) rotate(-30deg)}}
+.rp{position:absolute;border-radius:50%;background:rgba(99,102,241,.22);transform:scale(0);animation:rpl .6s ease-out forwards;pointer-events:none}
+.btn .rp{background:rgba(255,255,255,.45)}
+@keyframes rpl{to{transform:scale(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+/* calm premium */
+body::before{animation:none;opacity:.65}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.hero{animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards;background-size:100% 100%;padding:24px 22px}
+.hero::after{animation:none;opacity:.7}
+.bar div{box-shadow:none}.bar div::after{display:none}
+.btn::after,.rp{display:none}
+.btn:hover{transform:none;box-shadow:0 8px 20px rgba(124,58,237,.3)}
+.big:hover,.tp:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(20,24,60,.14)}
+.big:hover .bi,.tp:hover i,.ico:hover,.opt:hover{transform:none}
+.big,.tp,.blk,.opt,.rv,.fci,.ico,.srch{box-shadow:0 1px 2px rgba(16,20,50,.06),0 10px 28px rgba(16,20,50,.07)}
+.stats{gap:8px}.stats b{font-size:19px}
+#app{max-width:680px;padding-bottom:120px}
+#app[data-v=home],#app[data-v=pick]{max-width:980px}
+.blk{font-size:var(--rs,16px);line-height:1.7;padding:16px 18px}
+.blk h3{font-size:18px}
+.menu{display:grid;gap:12px}.menu .big{margin:0}
+.pg{height:5px;background:var(--bd);border-radius:4px;margin:10px 4px 0;overflow:hidden}.pg div{height:100%;background:var(--ok);border-radius:4px;transition:width .4s}
+.tools{display:flex;gap:10px;align-items:flex-start}.tools .srch{flex:1}.tools .ico{flex:none;height:46px;width:46px;border-radius:14px;font-weight:700;font-size:15px}
+.kn{margin-top:10px}.kn .btn{font-size:15px}
+.nav{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;display:flex;gap:2px;padding:6px;width:min(420px,calc(100% - 24px));box-sizing:border-box;background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--bd);border-radius:22px;box-shadow:0 12px 40px rgba(20,24,60,.18)}
+.nav button{flex:1;background:none;border:none;border-radius:16px;padding:7px 2px;font-size:11px;font-weight:600;color:var(--mut);transition:background .25s,color .25s}
+.nav button i{display:block;font-style:normal;font-size:20px;line-height:1.2}
+.nav button.on{background:var(--g);color:#fff}
+@media(min-width:760px){.grid,.menu{grid-template-columns:repeat(3,1fr)}.menu .big{flex-direction:column;align-items:flex-start;padding:22px}.hero{padding:36px}.hero h1{font-size:42px}#app{padding-top:24px}.fci{min-height:340px}.fci .t{font-size:26px}.fci.a .t{font-size:18px}.q{font-size:22px}.opt{padding:15px 16px}}
 </style>
 </head>
 <body>
@@ -55,7 +154,7 @@ ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
 <script>
 var L=function(a){return"<ul>"+a.map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul>"};
 var F=function(x){return"<div class='fm'>"+x+"</div>"};
-var TB=function(r){return"<table class='tb'>"+r.map(function(x,i){return"<tr>"+x.map(function(c){return(i?"<td>":"<th>")+c+(i?"</td>":"</th>")}).join("")+"</tr>"}).join("")+"</table>"};
+var TB=function(r){return"<div class='tbw'><table class='tb'>"+r.map(function(x,i){return"<tr>"+x.map(function(c){return(i?"<td>":"<th>")+c+(i?"</td>":"</th>")}).join("")+"</tr>"}).join("")+"</table></div>"};
 var R=function(s){return s.replace(/\*\*(.+?)\*\*/g,"<mark>$1</mark>").replace(/([A-Za-z])_(\w)/g,"$1<sub>$2</sub>").replace(/\^(\w+)/g,"<sup>$1</sup>")};
 var SIG="<span class='sg'><i>z</i><b>Σ</b><i>i=1</i></span>";
 var D=[
@@ -120,39 +219,47 @@ var D=[
 ["Alokacija memorije u segmentima","**Segment** je dio procesa (npr. programa) koji čini zasebnu logičku cjelinu. Segment može biti jedan ili više programa, jedna ili više baza podataka. Programer vidi segment kao posebnu linearnu memoriju određene veličine (segmenti ne moraju biti iste veličine). Alokacija memorije u segmentima, kao i straničenje, poziva segmente u RAM na zahtjev, kada su potrebni za obradu.","Segment je logička cjelina procesa promjenjive veličine, vidljiva programeru.",1],
 ["Segmenti i stranice: razlike","Razlike između te dvije tehnike alokacije:"+L(["segmenti su **logički**, a stranice **fizičke cjeline**","segmenti su **promjenjivi**, a stranice **unaprijed određene veličine**","stranice **nisu vidljive** programeru dok su segmenti vidljivi"])+"U **tablici segmenata** za svaki se segment vode podatci o adresi segmenta na vanjskoj memoriji, veličini segmenta, logičkoj oznaci postojanja ili nepostojanja segmenta u radnoj memoriji te početnoj adresi segmenta u RAM-u. Svaki redak tablice sadrži podatke za jedan segment. Segmentiranje ima jedan ozbiljan nedostatak: **fragmentiranje memorije**. Nakon niza alociranja i dealociranja segmenata u RAM-u ponovno se stvaraju relativno velike slobodne cjeline pa memorija nije dovoljno iskorištena.","Segmenti: logički, promjenjivi, vidljivi; stranice: fizičke, fiksne, nevidljive. Nedostatak segmenata: fragmentacija.",1]]]
 ];
-var app=document.getElementById("app"),S={};
+var app=document.getElementById("app"),S={},K={best:0,played:0,xp:0};
+try{var sv=JSON.parse(localStorage.getItem("inf-stats"));if(sv)K=sv}catch(e){}
+function save(){try{localStorage.setItem("inf-stats",JSON.stringify(K))}catch(e){}}
 function sh(a){return a.slice().sort(function(){return Math.random()-.5})}
 function allS(){return[].concat.apply([],D.map(function(t){return t[2]}))}
+function dark(){var t=document.documentElement.getAttribute("data-theme");return t?t=="dark":window.matchMedia("(prefers-color-scheme: dark)").matches}
+function tg(){document.documentElement.setAttribute("data-theme",dark()?"light":"dark")}
+function hd(b){return"<div class='top'>"+(b?"<button class='back' onclick=\""+b+"\">‹ Natrag</button>":"<span class='logo'>📘 Informatika</span>")+"<button class='ico' onclick='tg()' aria-label='Promijeni temu'>◐</button></div>"}
+function render(h){app.style.animation="none";app.innerHTML=h;void app.offsetWidth;app.style.animation="";window.scrollTo(0,0);enh()}
 function home(){
-app.innerHTML="<h1>📘 Informatika</h1><p>Kolokvij: što želiš danas?</p>"+
-"<button class='big' onclick=\"pick('read')\"><b>📄 Čitam</b><span>Puni tekst iz skripte, s formulama i tablicama. ⭐ = istaknuto u skripti.</span></button>"+
-"<button class='big' onclick=\"pick('learn')\"><b>📖 Učim</b><span>Kartice: pojam na prednjoj, puna definicija na poleđini.</span></button>"+
-"<button class='big' onclick=\"pick('quiz')\"><b>🎯 Vježbam</b><span>Kviz s bodovima i nizom točnih odgovora.</span></button>";
+S.view="home";
+render(hd()+"<div class='hero'><h1>Kolokvij: spreman?</h1><p>Čitaj, uči kartice i vježbaj kviz.</p><div class='stats'><div><b>"+K.xp+"</b>XP ukupno</div><div><b>"+K.best+"</b>najbolji niz</div><div><b>"+K.played+"</b>kvizova</div><div><b>"+Object.keys(K.kn||{}).filter(function(k){return K.kn[k]==1}).length+"</b>znam</div></div></div>"+
+"<div class='menu'><button class='big' onclick=\"pick('read')\"><span class='bi'>📄</span><div><b>Čitam</b><span>Puni tekst iz skripte, s formulama i tablicama. ⭐ = istaknuto u skripti.</span></div></button>"+
+"<button class='big' onclick=\"pick('learn')\"><span class='bi'>📖</span><div><b>Učim</b><span>Kartice: pojam na prednjoj, puna definicija na poleđini.</span></div></button>"+
+"<button class='big' onclick=\"pick('quiz')\"><span class='bi'>🎯</span><div><b>Vježbam</b><span>Kviz s bodovima i nizom točnih odgovora.</span></div></button></div>");
 }
 function pick(m){
-S.mode=m;
-var h="<button class='back' onclick='home()'>‹ Natrag</button><h2>"+(m=="learn"?"Što učiš?":m=="quiz"?"Što vježbaš?":"Što čitaš?")+"</h2><div class='grid'>";
-D.forEach(function(t,i){var n=m=="quiz"?t[2].filter(function(c){return c[2]}).length:t[2].length;h+="<button class='tp' onclick='go("+i+")'><i>"+t[1]+"</i>"+t[0]+"<br><small>"+n+(m=="quiz"?" pitanja":m=="learn"?" kartica":" dijelova")+"</small></button>"});
+S.mode=m;S.view="pick";
+var h=hd("home()")+"<h2>"+(m=="learn"?"Što učiš?":m=="quiz"?"Što vježbaš?":"Što čitaš?")+"</h2><div class='grid'>";
+D.forEach(function(t,i){var n=m=="quiz"?t[2].filter(function(c){return c[2]}).length:t[2].length;h+="<button class='tp' onclick='go("+i+")'><i>"+t[1]+"</i>"+t[0]+"<small>"+n+(m=="quiz"?" pitanja":m=="learn"?" kartica":" dijelova")+"</small>"+(m=="learn"?"<div class='pg'><div style='width:"+Math.round(t[2].filter(function(c){return (K.kn||{})[c[0]]==1}).length/n*100)+"%'></div></div>":"")+"</button>"});
 h+="</div>";
-if(m=="quiz")h+="<button class='big' onclick='go(-1)'><b>🎲 Sve teme</b><span>10 nasumičnih pitanja iz cijelog gradiva.</span></button>";
-if(m=="read")h+="<button class='big' onclick='go(-1)'><b>📚 Sve teme</b><span>Cijelo gradivo odjednom.</span></button>";
-app.innerHTML=h;
+if(m=="quiz")h+="<button class='big' onclick='go(-1)'><span class='bi'>🎲</span><div><b>Sve teme</b><span>10 nasumičnih pitanja iz cijelog gradiva.</span></div></button>";
+if(m=="read")h+="<button class='big' onclick='go(-1)'><span class='bi'>📚</span><div><b>Sve teme</b><span>Cijelo gradivo odjednom.</span></div></button>";
+render(h);
 }
 function go(i){S.t=i;S.mode=="learn"?learn():S.mode=="read"?readT():quiz()}
 function readT(){
+S.view="read";
 var ts=S.t<0?D:[D[S.t]];
-var h="<button class='back' onclick=\"pick('read')\">‹ Teme</button><h1>📄 Gradivo</h1><p>⭐ i ljubičasta crta = istaknuto u tvojoj skripti. <mark>Žuto</mark> = ključni pojmovi.</p>";
-ts.forEach(function(t){h+="<h2>"+t[1]+" "+t[0]+"</h2>";t[2].forEach(function(c){h+="<div class='sec"+(c[3]?" st":"")+"'><h3>"+c[0]+(c[3]?" ⭐":"")+"</h3>"+R(c[1])+"</div>"})});
-app.innerHTML=h+"<div class='row'><button class='btn sec' onclick=\"pick('read')\">Teme</button><button class='btn' onclick='home()'>Izbornik</button></div>";
-window.scrollTo(0,0);
+var h=hd("pick('read')")+"<h1>📄 Gradivo</h1><p>⭐ i ljubičasta crta = istaknuto u tvojoj skripti. <mark>Žuto</mark> = ključni pojmovi.</p><div class='tools'><input class='srch' type='search' placeholder='Pretraži gradivo…' oninput='fl(this.value)'><button class='ico' onclick='fs()' aria-label='Veličina slova'>Aa</button></div>";
+ts.forEach(function(t){h+="<h2>"+t[1]+" "+t[0]+"</h2>";t[2].forEach(function(c){h+="<div class='blk"+(c[3]?" st":"")+"'><h3>"+c[0]+(c[3]?"<span>⭐</span>":"")+"</h3>"+R(c[1])+"</div>"})});
+render(h+"<div class='row'><button class='btn ghost' onclick=\"pick('read')\">Teme</button><button class='btn' onclick='home()'>Izbornik</button></div>");
 }
-function learn(){S.deck=D[S.t][2].slice();S.i=0;S.f=false;card()}
+function fl(v){v=v.toLowerCase();document.querySelectorAll(".blk").forEach(function(b){b.style.display=b.textContent.toLowerCase().indexOf(v)<0?"none":""})}
+function learn(){S.view="learn";S.deck=D[S.t][2].slice();S.i=0;S.f=false;card()}
 function card(){
 var c=S.deck[S.i],n=S.deck.length;
-app.innerHTML="<button class='back' onclick=\"pick('learn')\">‹ Teme</button><div class='hud'><span>"+D[S.t][0]+"</span><span>"+(S.i+1)+" / "+n+"</span></div>"+
+render(hd("pick('learn')")+"<div class='hud'><span>"+D[S.t][0]+"</span><span>"+(S.i+1)+" / "+n+"</span></div>"+
 "<div class='bar'><div style='width:"+((S.i+1)/n*100)+"%'></div></div>"+
-"<div class='fc"+(S.f?" a":"")+"' onclick='flip()'><small>"+(S.f?"Definicija":"Pojam · dodirni za definiciju")+"</small><div class='t'>"+(S.f?R(c[1]):c[0])+"</div></div>"+
-"<div class='row'><button class='btn sec' onclick='mv(-1)'>‹</button><button class='btn sec' onclick='mix()'>🔀</button><button class='btn' onclick='mv(1)'>›</button></div>";
+"<div class='fc'><div class='fci"+(S.f?" a":"")+"' onclick='flip()'><small>"+(S.f?"Definicija":"Pojam · dodirni za definiciju")+"</small><div class='t'>"+(S.f?R(c[1]):c[0])+"</div></div></div>"+
+"<div class='row'><button class='btn ghost' onclick='mv(-1)' aria-label='Prethodna'>‹</button><button class='btn ghost' onclick='mix()' aria-label='Promiješaj'>🔀</button><button class='btn' onclick='mv(1)' aria-label='Sljedeća'>›</button></div><div class='row kn'><button class='btn ghost' onclick='kn(0)'>Ponovi kasnije</button><button class='btn ghost' onclick='kn(1)'>✓ Znam</button></div>");
 }
 function flip(){S.f=!S.f;card()}
 function mix(){S.deck=sh(S.deck);S.i=0;S.f=false;card()}
@@ -160,7 +267,7 @@ function mv(d){
 var j=S.i+d;
 if(j<0)return;
 if(j>=S.deck.length){
-app.innerHTML="<div class='res'>🎉</div><h2 style='text-align:center'>Prošao/la si cijelu temu!</h2><p style='text-align:center'>Sad provjeri što si zapamtio/la.</p><div class='row'><button class='btn sec' onclick=\"pick('learn')\">Teme</button><button class='btn' onclick='S.mode=\"quiz\";go("+S.t+")'>Vježbaj 🎯</button></div>";
+render(hd("pick('learn')")+"<div class='res'>🎉</div><h2 style='text-align:center'>Prošao/la si cijelu temu!</h2><p style='text-align:center'>Sad provjeri što si zapamtio/la.</p><div class='row'><button class='btn ghost' onclick=\"pick('learn')\">Teme</button><button class='btn' onclick='S.mode=\"quiz\";go("+S.t+")'>Vježbaj 🎯</button></div>");
 return;}
 S.i=j;S.f=false;card();
 }
@@ -173,29 +280,48 @@ var ds=sh(same).slice(0,3);
 if(ds.length<3)ds=ds.concat(sh(oth.filter(function(x){return ds.indexOf(x)<0})).slice(0,3-ds.length));
 return{q:"Odaberi točan opis: „"+c[0]+"“",a:c[2],o:sh([c[2]].concat(ds.map(function(x){return x[2]})))};
 });
-S.qs=qs;S.n=0;S.xp=0;S.st=0;S.ok=0;S.wr=[];S.lock=false;ask();
+S.qs=qs;S.n=0;S.xp=0;S.st=0;S.ok=0;S.bs=0;S.wr=[];S.lock=false;ask();
 }
 function ask(){
+S.view="quiz";
 var q=S.qs[S.n],n=S.qs.length;
-var h="<button class='back' onclick=\"pick('quiz')\">‹ Teme</button><div class='hud'><span>Pitanje "+(S.n+1)+" / "+n+"</span><span>⚡ "+S.st+" &nbsp; ⭐ "+S.xp+" XP</span></div><div class='bar'><div style='width:"+(S.n/n*100)+"%'></div></div><div class='q'>"+q.q+"</div>";
-q.o.forEach(function(o,i){h+="<button class='opt' id='o"+i+"' onclick='ans("+i+")'>"+R(o)+"</button>"});
-app.innerHTML=h+"<div id='fb'></div>";S.lock=false;
+var h=hd("pick('quiz')")+"<div class='hud'><span>Pitanje "+(S.n+1)+" / "+n+"</span><span>⚡ "+S.st+" &nbsp; ⭐ "+S.xp+" XP</span></div><div class='bar'><div style='width:"+(S.n/n*100)+"%'></div></div><div class='q'>"+q.q+"</div>";
+q.o.forEach(function(o,i){h+="<button class='opt' id='o"+i+"' onclick='ans("+i+")'><em>"+"ABCD".charAt(i)+"</em><span>"+R(o)+"</span></button>"});
+render(h+"<div id='fb'></div>");S.lock=false;
 }
 function ans(i){
 if(S.lock)return;S.lock=true;
 var q=S.qs[S.n],good=q.o[i]==q.a,fb=document.getElementById("fb");
 q.o.forEach(function(o,k){if(o==q.a)document.getElementById("o"+k).classList.add("ok")});
 var nx="<div class='row'><button class='btn' onclick='nxt()'>"+(S.n+1>=S.qs.length?"Rezultat":"Dalje")+" ›</button></div>";
-if(good){var g=10+Math.min(S.st,5)*2;S.st++;S.xp+=g;S.ok++;fb.innerHTML="<div class='fb ok'>✅ Točno! +"+g+" XP</div>"+nx}
+if(good){var g=10+Math.min(S.st,5)*2;S.st++;if(S.st>S.bs)S.bs=S.st;S.xp+=g;S.ok++;fb.innerHTML="<div class='fb ok'>✅ Točno! +"+g+" XP</div>"+nx}
 else{S.st=0;S.wr.push(q);document.getElementById("o"+i).classList.add("no");fb.innerHTML="<div class='fb no'>❌ Nije točno. Točan odgovor je označen zeleno.</div>"+nx}
+nx=document.querySelector("#fb .btn");if(nx)nx.scrollIntoView({block:"nearest",behavior:"smooth"});
 }
 function nxt(){S.n++;S.n>=S.qs.length?fin():ask()}
 function fin(){
+S.view="fin";
+K.played++;K.xp+=S.xp;if(S.bs>K.best)K.best=S.bs;save();
 var n=S.qs.length,p=Math.round(S.ok/n*100),e=p==100?"🏆":p>=70?"🌟":p>=40?"👍":"💪";
-var h="<div class='res'>"+e+"</div><h2 style='text-align:center'>"+S.ok+" / "+n+" točno ("+p+"%)</h2><p style='text-align:center'>⭐ "+S.xp+" XP</p>";
+var h=hd()+"<div class='res'>"+e+"</div><div class='ring' style='--p:"+p+"'><span>"+p+"%</span></div><h2 style='text-align:center'>"+S.ok+" / "+n+" točno</h2><p style='text-align:center'>⭐ "+S.xp+" XP · najbolji niz u ovoj rundi: ⚡ "+S.bs+"</p>";
 if(S.wr.length){h+="<h2>Ponovi ovo:</h2>";S.wr.forEach(function(q){h+="<div class='rv'><b>"+q.q+"</b><span>"+R(q.a)+"</span></div>"})}
-app.innerHTML=h+"<div class='row'><button class='btn sec' onclick=\"pick('quiz')\">Teme</button><button class='btn' onclick='quiz()'>Ponovi 🔁</button></div>";
+render(h+"<div class='row'><button class='btn ghost' onclick=\"pick('quiz')\">Teme</button><button class='btn' onclick='quiz()'>Ponovi 🔁</button></div>");if(p>=70)confetti();
 }
+var FS=0;function fs(){FS=(FS+1)%3;document.documentElement.style.setProperty("--rs",[16,18,20][FS]+"px")}
+function kn(v){K.kn=K.kn||{};K.kn[S.deck[S.i][0]]=v;save();mv(1)}
+var NV=document.createElement("nav");NV.className="nav";NV.innerHTML="<button data-m='home' onclick='home()'><i>⌂</i>Početna</button><button data-m='read' onclick=\"pick('read')\"><i>📄</i>Čitam</button><button data-m='learn' onclick=\"pick('learn')\"><i>📖</i>Učim</button><button data-m='quiz' onclick=\"pick('quiz')\"><i>🎯</i>Vježbam</button>";document.body.appendChild(NV);
+function enh(){
+app.setAttribute("data-v",S.view);var nm=S.view=="home"?"home":(S.view=="learn"||S.view=="pick"||S.view=="read")?S.mode:"quiz";NV.querySelectorAll("button").forEach(function(b){b.className=b.getAttribute("data-m")==nm?"on":""});NV.style.display=S.view=="quiz"?"none":"";
+app.querySelectorAll(".hero,.big,.tp,.blk,.opt,.rv").forEach(function(e,i){e.style.setProperty("--i",Math.min(i,14))});
+app.querySelectorAll(".stats b").forEach(function(b){var v=+b.textContent,t0=performance.now();(function f(t){var k=Math.min((t-t0)/900,1);b.textContent=Math.round(v*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)});
+}
+function confetti(){var c=["#6366f1","#a855f7","#ec4899","#f59e0b","#10b981","#38bdf8"];for(var i=0;i<60;i++){var p=document.createElement("i");p.style.cssText="position:fixed;z-index:99;pointer-events:none;top:-10px;left:"+Math.random()*100+"vw;width:8px;height:12px;border-radius:2px;background:"+c[i%6];document.body.appendChild(p);(function(p){var a=p.animate([{transform:"translate(0,0) rotate(0)",opacity:1},{transform:"translate("+(Math.random()*160-80)+"px,"+(innerHeight+20)+"px) rotate("+(Math.random()*900-450)+"deg)",opacity:.9}],{duration:1800+Math.random()*1600,delay:Math.random()*400,easing:"cubic-bezier(.2,.6,.4,1)",fill:"forwards"});a.onfinish=function(){p.remove()}})(p)}}
+document.addEventListener("pointerdown",function(e){var b=e.target.closest(".btn,.big,.tp,.opt,.ico");if(!b)return;var r=b.getBoundingClientRect(),s=Math.max(r.width,r.height)*2,d=document.createElement("span");d.className="rp";d.style.cssText="width:"+s+"px;height:"+s+"px;left:"+(e.clientX-r.left-s/2)+"px;top:"+(e.clientY-r.top-s/2)+"px";b.appendChild(d);setTimeout(function(){d.remove()},650)});
+document.addEventListener("keydown",function(e){
+if(e.target.tagName=="INPUT")return;
+if(S.view=="learn"){if(e.key=="ArrowRight")mv(1);else if(e.key=="ArrowLeft")mv(-1);else if(e.key==" "){e.preventDefault();flip()}}
+else if(S.view=="quiz"){var k=parseInt(e.key,10);if(k>=1&&k<=4&&document.getElementById("o"+(k-1)))ans(k-1);else if(e.key=="Enter"){var b=document.querySelector("#fb .btn");if(b)b.click()}}
+});
 home();
 </script>
 </body>
